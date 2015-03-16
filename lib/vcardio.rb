@@ -1,4 +1,5 @@
 require 'vcardio/error'
+require 'vcardio/parameter'
 require 'vcardio/parser/group_parser'
 require 'vcardio/parser/name_parser'
 require 'vcardio/parser/param_parser'

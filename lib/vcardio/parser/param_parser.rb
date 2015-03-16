@@ -23,12 +23,9 @@ module VCardio
       #
       def self.compose_param(name, value)
         value = value.gsub(/"/, '')
+        value = value.split(',') if value.index(',')
 
-        if value.index(',')
-          [name, value.split(',')]
-        else
-          [name, value]
-        end
+        VCardio::Parameter.new(name, value)
       end
       private_class_method :compose_param
 
