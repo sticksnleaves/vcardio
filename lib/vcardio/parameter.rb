@@ -7,6 +7,9 @@ module VCardio
   #
   # The parameter name will be `type` and value will be `['WORK', 'HOME']`.
   #
+  # @attr_reader [String] name
+  # @attr_reader [String,Array] value
+  #
   class Parameter
     def initialize(name, value)
       @name = name
