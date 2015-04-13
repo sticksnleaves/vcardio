@@ -35,6 +35,8 @@ module VCardio
 
           properties << property
         end
+
+        properties
       end
       private_class_method :split_properties
     end

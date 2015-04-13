@@ -3,7 +3,10 @@ require 'spec_helper'
 describe VCardio::Parser::VCardParser do
   it 'should parse properties from vCard entity' do
     vcard_entity = "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Smith;Anthony\r\nEND:VCARD"
-    properties = [VCardio::Property.new(nil, 'FN', nil, %w(Smith Anthony))]
+    properties = [
+      VCardio::Property.new(nil, 'VERSION', nil, '4.0'),
+      VCardio::Property.new(nil, 'FN', nil, %w(Smith Anthony))
+    ]
     vcard = VCardio::VCard.new(properties)
 
     expect(VCardio::Parser::VCardParser.call(vcard_entity)).to eq(vcard)

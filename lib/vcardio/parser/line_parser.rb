@@ -10,8 +10,9 @@ module VCardio
         group  = VCardio::Parser::GroupParser.call(parts[0])
         name   = VCardio::Parser::NameParser.call(parts[0])
         params = VCardio::Parser::ParamParser.call(parts[0])
+        value  = VCardio::Parser::ValueParser.call(parts[1])
 
-        VCardio::Property.new(group, name, params, nil)
+        VCardio::Property.new(group, name, params, value)
       end
     end
   end
