@@ -3,7 +3,7 @@ module VCardio
     #
     # @private
     #
-    class VCardParser
+    class DocumentParser
       def self.call(vcard)
         document = split_properties(vcard)
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe VCardio::Parser::VCardParser do
+describe VCardio::Parser::DocumentParser do
   it 'should parse properties from vCard entity' do
     vcard_entity = "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Smith;Anthony\r\nEND:VCARD"
     properties = [
@@ -9,14 +9,14 @@ describe VCardio::Parser::VCardParser do
     ]
     vcard = VCardio::VCard.new(properties)
 
-    expect(VCardio::Parser::VCardParser.call(vcard_entity)).to eq(vcard)
+    expect(VCardio::Parser::DocumentParser.call(vcard_entity)).to eq(vcard)
   end
 
   it 'should fail if vCard does not start with BEGIN:VCARD' do
     vcard_entity = "VERSION:4.0\r\nBEGIN:VCARD"
 
     expect do
-      VCardio::Parser::VCardParser.call(vcard_entity)
+      VCardio::Parser::DocumentParser.call(vcard_entity)
     end.to raise_error(VCardio::Error, 'Invalid vCard: First line must be BEGIN:VCARD')
   end
 
@@ -24,7 +24,7 @@ describe VCardio::Parser::VCardParser do
     vcard_entity = "BEGIN:VCARD\r\nEND:VCARD\r\nVERSION:4.0"
 
     expect do
-      VCardio::Parser::VCardParser.call(vcard_entity)
+      VCardio::Parser::DocumentParser.call(vcard_entity)
     end.to raise_error(VCardio::Error, 'Invalid vCard: Last line must be END:VCARD')
   end
 
@@ -32,7 +32,7 @@ describe VCardio::Parser::VCardParser do
     vcard_entity = "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Smith;Anthony\r\nEND:VCARD\r\n\r\n"
 
     expect do
-      VCardio::Parser::VCardParser.call(vcard_entity)
+      VCardio::Parser::DocumentParser.call(vcard_entity)
     end.to_not raise_error
   end
 
@@ -40,7 +40,7 @@ describe VCardio::Parser::VCardParser do
     vcard_entity = "BEGIN:VCARD\r\nFN:Smith;Anthony\r\nEND:VCARD"
 
     expect do
-      VCardio::Parser::VCardParser.call(vcard_entity)
+      VCardio::Parser::DocumentParser.call(vcard_entity)
     end.to raise_error(VCardio::Error, 'Invalid vCard: Second line must be VERSION with value 3.0 or 4.0')
   end
 
@@ -48,7 +48,7 @@ describe VCardio::Parser::VCardParser do
     vcard_entity = "BEGIN:VCARD\r\nFN:Smith;Anthony\r\nVERSION:4.0\r\nEND:VCARD"
 
     expect do
-      VCardio::Parser::VCardParser.call(vcard_entity)
+      VCardio::Parser::DocumentParser.call(vcard_entity)
     end.to raise_error(VCardio::Error, 'Invalid vCard: Second line must be VERSION with value 3.0 or 4.0')
   end
 
@@ -56,7 +56,7 @@ describe VCardio::Parser::VCardParser do
     vcard_entity = "BEGIN:VCARD\r\nVERSION:4.0\r\nEND:VCARD"
 
     expect do
-      VCardio::Parser::VCardParser.call(vcard_entity)
+      VCardio::Parser::DocumentParser.call(vcard_entity)
     end.to raise_error(VCardio::Error, 'Invalid vCard: Must contain the FN property')
   end
 end
