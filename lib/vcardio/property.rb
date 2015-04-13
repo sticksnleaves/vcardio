@@ -11,7 +11,7 @@ module VCardio
     def initialize(group, name, parameters, value)
       @group = group
       @name = name
-      @parameters = parameters
+      @parameters = parameters || []
       @value = value
     end
 
