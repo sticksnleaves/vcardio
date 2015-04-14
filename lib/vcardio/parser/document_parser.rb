@@ -7,7 +7,7 @@ module VCardio
       def self.call(vcard)
         document = split_properties(vcard)
 
-        VCardio::Validator::VCardValidator.call(document)
+        VCardio::Validator::DocumentValidator.call(document)
 
         properties = parse_properties(document)
 

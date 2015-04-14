@@ -10,10 +10,10 @@ require 'vcardio/parser/line_parser'
 require 'vcardio/parser/name_parser'
 require 'vcardio/parser/param_parser'
 require 'vcardio/parser/value_parser'
+require 'vcardio/validator/document_validator'
 require 'vcardio/validator/group_validator'
 require 'vcardio/validator/name_validator'
 require 'vcardio/validator/param_name_validator'
-require 'vcardio/validator/vcard_validator'
 require 'vcardio/version'
 
 module VCardio
