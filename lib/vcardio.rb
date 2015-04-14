@@ -1,5 +1,6 @@
 require 'manilla'
 
+require 'vcardio/builder'
 require 'vcardio/error'
 require 'vcardio/parameter'
 require 'vcardio/property'
