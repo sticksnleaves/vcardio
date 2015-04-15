@@ -9,7 +9,7 @@ module VCardio
         name_end_index = part.index(';')
 
         if name_end_index
-          params = part[name_end_index + 1, part.length].split(';')
+          params = part[name_end_index + 1, part.length].split(';', -1)
 
           values = compose_values(params)
         end
