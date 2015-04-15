@@ -34,7 +34,7 @@ module VCardio
       # Unfold on CRLF + whitespace and split on CRLF or LF.
       def self.split_properties(vcard)
         unfolded_vcard = Manilla.unfold(vcard, "\r\n\s")
-        unfolded_vcard.split(/\r\n|\\n(?<!\\\\n)/)
+        unfolded_vcard.split(/\r\n|\n(?<!\\\\n)/)
       end
       private_class_method :split_properties
 
