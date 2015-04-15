@@ -12,7 +12,7 @@ module VCardio
   #
   class Parameter
     def initialize(name, value)
-      @name = name
+      @name = name.to_s.upcase
       @value = value
     end
 

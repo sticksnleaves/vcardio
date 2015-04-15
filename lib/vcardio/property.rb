@@ -10,7 +10,7 @@ module VCardio
   class Property
     def initialize(group, name, parameters, value)
       @group = group
-      @name = name
+      @name = name.to_s.upcase
       @parameters = parameters || []
       @value = value
     end
