@@ -4,10 +4,9 @@ describe VCardio::Parser::DocumentParser do
   it 'should parse properties from vCard entity' do
     vcard_entity = "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Smith;Anthony\r\nEND:VCARD"
     properties = [
-      VCardio::Property.new(nil, 'VERSION', nil, '4.0'),
       VCardio::Property.new(nil, 'FN', nil, %w(Smith Anthony))
     ]
-    vcard = VCardio::VCard.new(properties)
+    vcard = VCardio::VCard.new('4.0', properties)
 
     expect(VCardio::Parser::DocumentParser.call(vcard_entity)).to eq(vcard)
   end
@@ -58,5 +57,9 @@ describe VCardio::Parser::DocumentParser do
     expect do
       VCardio::Parser::DocumentParser.call(vcard_entity)
     end.to raise_error(VCardio::Error, 'Invalid vCard: Must contain the FN property')
+  end
+
+  it 'should set the vCard version' do
+    VCardio::Parser
   end
 end
