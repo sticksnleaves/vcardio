@@ -1,10 +1,7 @@
 # VCardio
 
 [![Build Status](https://travis-ci.org/sticksnleaves/vcardio.svg?branch=master)](https://travis-ci.org/sticksnleaves/vcardio)
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/vcardio`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+[![Code Climate](https://codeclimate.com/github/sticksnleaves/vcardio/badges/gpa.svg)](https://codeclimate.com/github/sticksnleaves/vcardio)
 
 ## Installation
 
@@ -24,7 +21,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Create a vCard
+
+VCardio comes packed with an easy to use vCard building DSL:
+
+```ruby
+vcard = VCardio::VCard.new('3.0') do
+  tel '(555) 555-5555', type: %w(HOME WORK)
+end
+```
 
 ## Development
 
