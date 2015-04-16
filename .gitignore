@@ -10,3 +10,4 @@
 .rbenv*
 .gems
 .ruby-version
+.DS_Store
