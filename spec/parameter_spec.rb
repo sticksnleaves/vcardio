@@ -1,6 +1,22 @@
 require 'spec_helper'
 
 describe VCardio::Parameter do
+  describe 'to_abnf' do
+    it 'should convert parameter with array value into ABNF' do
+      abnf  = 'TYPE=WORK,HOME'
+      param = VCardio::Parameter.new('type', %w(WORK HOME))
+
+      expect(param.to_abnf(:rfc2426)).to eq(abnf)
+    end
+
+    it 'should convert parameter with string value into ABNF' do
+      abnf  = 'TYPE=WORK'
+      param = VCardio::Parameter.new('type', 'WORK')
+
+      expect(param.to_abnf(:rfc2426)).to eq(abnf)
+    end
+  end
+
   describe '==' do
     it 'should equate identical instances' do
       param_1 = VCardio::Parameter.new('type', %w(WORK HOME))

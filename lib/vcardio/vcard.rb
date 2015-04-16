@@ -9,12 +9,39 @@ module VCardio
 
     attr_reader :properties, :version
 
+    def separator
+      if spec == :rfc2426
+        "\n"
+      elsif spec == :rfc6350
+        "\r\n"
+      end
+    end
+
     def spec
       if @version == '3.0'
         :rfc2426
       elsif @version == '4.0'
         :rfc6350
       end
+    end
+
+    def to_abnf
+      abnf = []
+      abnf << 'BEGIN:VCARD'
+      abnf << "VERSION:#{version}"
+
+      @properties.each do |property|
+        abnf << "#{Manilla.fold(property.to_abnf(spec), 75, "\r\n\s")}"
+      end
+
+      abnf << 'END:VCARD'
+
+      abnf.join(separator)
+    end
+    alias_method :to_s, :to_abnf
+
+    def to_file(path)
+      File.write(path, to_abnf)
     end
 
     def ==(other)

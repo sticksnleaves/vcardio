@@ -18,6 +18,13 @@ module VCardio
 
     attr_reader :name, :value
 
+    def to_abnf(_spec)
+      abnf = @name
+      abnf += '='
+      abnf += @value.is_a?(Array) ? @value.join(',') : @value.to_s
+      abnf
+    end
+
     def ==(other)
       other.is_a?(VCardio::Parameter) &&
         name == other.name &&
