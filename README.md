@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/sticksnleaves/vcardio.svg?branch=master)](https://travis-ci.org/sticksnleaves/vcardio)
 [![Code Climate](https://codeclimate.com/github/sticksnleaves/vcardio/badges/gpa.svg)](https://codeclimate.com/github/sticksnleaves/vcardio)
+[![Coverage Status](https://coveralls.io/repos/sticksnleaves/vcardio/badge.svg?branch=master)](https://coveralls.io/r/sticksnleaves/vcardio?branch=master)
 
 ## Installation
 
