@@ -57,7 +57,7 @@ vcard.to_file('/path/to/file.vcf')
 
 ### Parsing vCards
 
-If you already have a vCard and want to manipulate it into Ruby just call
+If you already have a vCard and want to manipulate it in Ruby just call
 `VCardio::VCard#parse`.
 
 ```ruby
