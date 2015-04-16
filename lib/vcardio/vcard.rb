@@ -9,6 +9,10 @@ module VCardio
 
     attr_reader :properties, :version
 
+    def get(property_name)
+      @properties.select { |p| p.name == property_name.to_s.upcase }
+    end
+
     def separator
       if spec == :rfc2426
         "\n"
@@ -48,6 +52,11 @@ module VCardio
       other.is_a?(VCardio::VCard) &&
         other.properties == properties &&
         other.version    == version
+    end
+
+    def method_missing(method_name, *args, &block)
+      return super if respond_to?(method_name)
+      get(method_name)
     end
 
     def self.parse(file)

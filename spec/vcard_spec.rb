@@ -1,6 +1,22 @@
 require 'spec_helper'
 
 describe VCardio::VCard do
+  describe 'get' do
+    it 'should retrieve an array of properties matching the property name' do
+      props = [VCardio::Property.new(nil, 'FN', nil, %w(Smith Anthony))]
+      vcard = VCardio::VCard.new('3.0', props)
+
+      expect(vcard.get('fn')).to eq(props)
+    end
+
+    it 'should override method_missing to allow retrieving properties on VCard' do
+      props = [VCardio::Property.new(nil, 'FN', nil, %w(Smith Anthony))]
+      vcard = VCardio::VCard.new('3.0', props)
+
+      expect(vcard.fn).to eq(props)
+    end
+  end
+
   describe 'parse' do
     it 'should parse from a string' do
       vcard_entity = "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Smith;Anthony\r\nEND:VCARD"
