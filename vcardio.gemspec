@@ -20,9 +20,10 @@ Gem::Specification.new do |spec|
     end
   )
 
-  spec.bindir        = 'exe'
-  spec.executables   = spec.files.grep(/^exe\//) { |f| File.basename(f) }
-  spec.require_paths = ['lib']
+  spec.bindir                = 'exe'
+  spec.executables           = spec.files.grep(/^exe\//) { |f| File.basename(f) }
+  spec.require_paths         = ['lib']
+  spec.required_ruby_version = '>= 1.9.2'
 
   spec.add_dependency 'manilla', '~> 1.0.0'
 
