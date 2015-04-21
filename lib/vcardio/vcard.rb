@@ -45,7 +45,13 @@ module VCardio
     alias_method :to_s, :to_abnf
 
     def to_file(path)
-      File.write(path, to_abnf)
+      file = File.new(path, 'w')
+
+      file.write(to_abnf)
+      file.flush
+      file.close
+
+      file
     end
 
     def ==(other)
